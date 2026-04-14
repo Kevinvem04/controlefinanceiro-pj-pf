@@ -17,7 +17,7 @@ export default function Sidebar({ currentView, setCurrentView }) {
       <aside className="hidden md:flex w-64 bg-dark-surface border-r border-dark-border flex-col">
         <div className="h-20 flex items-center px-6 border-b border-dark-border">
           <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-blue-500">
-            Lucro Primeiro
+            Finkev
           </div>
         </div>
         
@@ -54,7 +54,7 @@ export default function Sidebar({ currentView, setCurrentView }) {
       </aside>
 
       {/* Mobile Bottom Navigation Bar */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-dark-surface border-t border-dark-border z-40 flex justify-around items-center px-2 pb-safe">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 h-20 bg-dark-surface border-t border-dark-border z-40 flex justify-around items-start pt-2 pb-6 px-2">
         {navItems.map(item => {
           const active = currentView === item.id;
           const Icon = item.icon;

@@ -40,8 +40,8 @@ export default function Login() {
 
       <div className="w-full max-w-md bg-dark-surface/80 backdrop-blur-md border border-dark-border rounded-xl p-8 shadow-2xl relative">
         <div className="text-center mb-8">
-           <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400 mb-2">
-             Lucro Primeiro
+           <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400 mb-2">
+             Finkev
            </h1>
            <p className="text-slate-400 text-sm">
              Motor financeiro de alta performance

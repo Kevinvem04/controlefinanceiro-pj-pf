@@ -7,6 +7,7 @@ import Filters from './components/Filters';
 import DashboardUnificado from './views/DashboardUnificado';
 import Settings from './views/Settings';
 import Login from './views/Login';
+import TutorialModal from './components/TutorialModal';
 import { startOfMonth, endOfMonth, format } from 'date-fns';
 
 function App() {
@@ -93,6 +94,9 @@ function App() {
         {/* Floating Action Button */}
         <FAB store={store} />
       </main>
+      
+      {/* Primeiro Acesso Tutorial */}
+      <TutorialModal />
     </div>
   );
 }

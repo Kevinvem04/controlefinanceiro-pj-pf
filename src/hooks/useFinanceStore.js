@@ -23,6 +23,33 @@ export function useFinanceStore(user) {
         
       if (catErr) console.error("Error loading categories:", catErr);
 
+      let finalCats = catData || [];
+
+      // SEED INICIAL (Primeiro Acesso)
+      if (finalCats.length === 0 && !catErr) {
+          const INITIAL_CATEGORIES = [
+            { id: uuidv4(), name: 'Faturação Coprodução', entity: 'PJ', type: 'Receita', user_id: user.id },
+            { id: uuidv4(), name: 'Taxas de Gateway', entity: 'PJ', type: 'Despesa', user_id: user.id },
+            { id: uuidv4(), name: 'Tráfego Pago', entity: 'PJ', type: 'Despesa', user_id: user.id },
+            { id: uuidv4(), name: 'Impostos', entity: 'PJ', type: 'Despesa', user_id: user.id },
+            { id: uuidv4(), name: 'Distribuição de Lucros (Saída)', entity: 'PJ', type: 'Despesa', user_id: user.id },
+            { id: uuidv4(), name: 'Distribuição de Lucros (Entrada)', entity: 'PF', type: 'Receita', user_id: user.id },
+            { id: uuidv4(), name: 'Habitação', entity: 'PF', type: 'Despesa', user_id: user.id },
+            { id: uuidv4(), name: 'Alimentação', entity: 'PF', type: 'Despesa', user_id: user.id },
+            { id: uuidv4(), name: 'Saúde', entity: 'PF', type: 'Despesa', user_id: user.id },
+            { id: uuidv4(), name: 'Lazer', entity: 'PF', type: 'Despesa', user_id: user.id },
+            { id: uuidv4(), name: 'Aporte de Capital (Saída)', entity: 'PF', type: 'Despesa', user_id: user.id },
+            { id: uuidv4(), name: 'Aporte de Capital (Entrada)', entity: 'PJ', type: 'Receita', user_id: user.id }
+          ];
+          
+          const { error: seedErr } = await supabase.from('categories').insert(INITIAL_CATEGORIES);
+          if (seedErr) {
+             console.error("Failed to seed INITIAL_CATEGORIES:", seedErr);
+          } else {
+             finalCats = INITIAL_CATEGORIES;
+          }
+      }
+
       // Fetch Transactions
       const { data: txData, error: txErr } = await supabase
         .from('transactions')
@@ -30,7 +57,7 @@ export function useFinanceStore(user) {
 
       if (txErr) console.error("Error loading transactions:", txErr);
 
-      setCategories(catData || []);
+      setCategories(finalCats);
       setTransactions(txData || []);
       setIsLoaded(true);
     }

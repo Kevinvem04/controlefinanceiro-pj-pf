@@ -105,7 +105,7 @@ export default function NotionDatepicker({ dateRange, setDateRange }) {
            {/* Popover Calendar Container */}
            <div 
              ref={popoverRef}
-             className="w-full md:w-[340px] md:fixed pointer-events-auto mt-auto md:mt-0 bg-dark-surface border-t md:border border-dark-border rounded-t-2xl md:rounded-xl shadow-2xl p-6 md:p-4 animate-in slide-in-from-bottom flex flex-col max-h-[85vh] md:max-h-none overflow-y-auto"
+             className="w-full md:w-[340px] md:fixed pointer-events-auto mt-auto md:mt-0 bg-dark-surface border-t md:border border-dark-border rounded-t-2xl md:rounded-xl shadow-2xl p-6 pb-10 md:pb-4 md:p-4 animate-in slide-in-from-bottom flex flex-col max-h-[85vh] md:max-h-none overflow-y-auto"
              style={{
                // Desktop absolute behavior emulation via fixed relative coords!
                top: typeof window !== 'undefined' && !window.matchMedia('(max-width: 768px)').matches ? '90px' : 'auto',
