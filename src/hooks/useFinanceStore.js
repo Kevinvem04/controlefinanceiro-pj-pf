@@ -55,7 +55,10 @@ export function useFinanceStore(user) {
         .from('transactions')
         .select('*');
 
-      if (txErr) console.error("Error loading transactions:", txErr);
+      if (txErr) {
+          console.error("Error loading transactions:", txErr);
+          alert("Erro de RLS na Leitura de Transações: " + txErr.message);
+      }
 
       setCategories(finalCats);
       setTransactions(txData || []);
@@ -172,7 +175,10 @@ export function useFinanceStore(user) {
     setTransactions(prev => [...prev, ...inserts]);
 
     const { error } = await supabase.from('transactions').insert(inserts);
-    if (error) console.error("Failed to insert tx:", error);
+    if (error) {
+       console.error("Failed to insert tx:", error);
+       alert("Erro ao gravar no banco: " + error.message + " | Detalhes: " + JSON.stringify(error.details));
+    }
   }, [user, categories]);
 
   const updateTransaction = useCallback(async (id, updated) => {
